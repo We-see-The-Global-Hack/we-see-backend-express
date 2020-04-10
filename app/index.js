@@ -8,6 +8,7 @@ const { NOT_FOUND, INTERNAL_SERVER_ERROR } = require('http-status-codes');
 
 const { routing } = require('./routes');
 const authMiddleware = require('./middlewares/auth');
+const authenticate = require('./modules/auth');
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(compression({ level: 6 }));
 
 app.use(authMiddleware.initialize());
 
+app.use('/', authenticate);
 
 app.use(authMiddleware.authenticate('jwt', { session: false }));
 
