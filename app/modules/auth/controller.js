@@ -5,10 +5,14 @@ const { UNAUTHORIZED } = require('http-status-codes');
 const Users = require('../../models/Users');
 
 const signup = async (req, res) => {
-  const { password: rawPassword, email } = req.body;
+  const {
+    password: rawPassword, email, firstName, lastName,
+  } = req.body;
   const password = await bcrypt.hash(rawPassword, parseInt(process.env.BCRYPT_ROUNDS, 10));
-  await Users.create({ email, password });
-  return res.json({ status: 'authenticated' });
+  const user = await Users.create({
+    email, password, firstName, lastName,
+  });
+  return res.json({ status: 'authenticated', user: user.toObject() });
 };
 
 const login = async (req, res) => {
