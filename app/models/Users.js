@@ -28,6 +28,7 @@ const UsersSchema = new Schema({
   lastName: String,
   phoneNumber: {
     type: String,
+    default: customAlphabet('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', 6),
   },
   email: {
     type: String,
