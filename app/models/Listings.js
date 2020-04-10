@@ -24,7 +24,7 @@ const ListingsSchema = new Schema({
   parentCategory: ObjectId,
   isActive: Boolean,
 }, {
-  timestamps: true,
+  timestamps: false,
   collection: 'Listings',
 });
 
