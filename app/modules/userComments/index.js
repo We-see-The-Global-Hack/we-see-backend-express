@@ -4,7 +4,7 @@ const { storePaginationQuery } = require('../../middlewares/listUtils');
 const { preloadEntity } = require('../../middlewares/preloadEntities');
 const { asyncErrorHandler } = require('../../helpers/common');
 
-const Users = require('../../models/Users');
+const UserComments = require('../../models/UserComments');
 
 const {
   showEntity, listEntities, createEntity, updateEntity, deleteEntity,
@@ -16,7 +16,7 @@ const router = express.Router({ mergeParams: true });
 router.get('/', storePaginationQuery(), asyncErrorHandler(listEntities));
 router.post('/', asyncErrorHandler(createEntity));
 
-router.use('/:id', preloadEntity(Users));
+router.use('/:id', preloadEntity(UserComments));
 
 router.get('/:id', asyncErrorHandler(showEntity));
 router.patch('/:id', asyncErrorHandler(updateEntity));

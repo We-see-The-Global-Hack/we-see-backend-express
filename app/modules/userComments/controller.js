@@ -1,16 +1,16 @@
 const { NO_CONTENT, CREATED } = require('http-status-codes');
 
 const { paginationResponseWrapper } = require('../../helpers/common');
-const Users = require('../../models/Users');
+const UserComments = require('../../models/UserComments');
 
 
 const listEntities = async (
   { pagination: { filter, options } }, res,
-) => res.json(paginationResponseWrapper(await Users.paginate({ ...filter }, options)));
+) => res.json(paginationResponseWrapper(await UserComments.paginate({ ...filter }, options)));
 
 
 const createEntity = async ({ body }, res) => {
-  const entity = await Users.create(body);
+  const entity = await UserComments.create(body);
   return res.status(CREATED).json(entity);
 };
 
