@@ -28,7 +28,6 @@ const UsersSchema = new Schema({
   lastName: String,
   phoneNumber: {
     type: String,
-    unique: true,
   },
   email: {
     type: String,
