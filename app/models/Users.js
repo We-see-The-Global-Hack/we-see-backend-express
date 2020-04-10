@@ -37,8 +37,8 @@ const UsersSchema = new Schema({
   password: String,
   profileImage: String,
   aboutMe: String,
-  causes: String,
-  targetAudience: String,
+  causes: [String],
+  targetAudience: [String],
   values: String,
   isActive: {
     type: Boolean,
