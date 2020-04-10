@@ -2,7 +2,7 @@ const dotenv = require('dotenv');
 
 module.exports = {
   apps: [{
-    name: 'ADMIN_API',
+    name: 'WE_SEE_EXPRESS',
     script: 'server.js',
 
     instances: 1,

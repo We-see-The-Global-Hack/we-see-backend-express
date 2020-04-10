@@ -35,6 +35,7 @@ const UsersSchema = new Schema({
     lowercase: true,
     unique: true,
   },
+  password: String,
   profileImage: String,
   aboutMe: String,
   causes: String,

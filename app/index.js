@@ -26,7 +26,7 @@ app.use(compression({ level: 6 }));
 
 app.use(authMiddleware.initialize());
 
-app.use('/api/', authenticate);
+app.use('/api/auth', authenticate);
 
 app.use(authMiddleware.authenticate('jwt', { session: false }));
 
