@@ -17,6 +17,11 @@ const UserListingsSchema = new Schema({
     required: true,
     default: 'userListing',
   },
+  generalType: {
+    type: String,
+    enum: ['material', 'time'],
+    required: true,
+  },
   categoryId: {
     type: String,
     required: true,
@@ -26,6 +31,7 @@ const UserListingsSchema = new Schema({
     type: Schema.ObjectId,
     ref: 'Users',
   },
+  title: String,
   description: String,
   state: String,
   kind: {
@@ -37,6 +43,23 @@ const UserListingsSchema = new Schema({
     type: Boolean,
     default: true,
   },
+  imageUrl: String,
+  estimatedQuantity: {
+    value: Number,
+    measurements: String,
+  },
+  dataForMaterialType: {
+    city: String,
+    withTransport: Boolean,
+    quality: {
+      type: String,
+      enum: ['good', 'average', 'bad'],
+    },
+  },
+  dataForTimeType: {
+    language: String,
+  },
+  expirationDate: Date,
 }, {
   timestamps: true,
   collection: 'UserListings',
