@@ -42,7 +42,7 @@ const http = server(app);
 
 http.listen(process.env.PORT || 8081, (error) => {
   if (error) {
-    console.error({ serverSuccessStarted: false, error, });
+    console.error({ serverSuccessStarted: false, error });
   } else {
     console.log({ serverSuccessStarted: true });
   }

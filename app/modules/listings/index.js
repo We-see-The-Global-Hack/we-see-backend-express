@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { storePaginationQuery } = require('../../middlewares/listUtils');
+const { preparePaginationQuery } = require('../../middlewares/listUtils');
 const { preloadEntity } = require('../../middlewares/preloadEntities');
 const { asyncErrorHandler } = require('../../helpers/common');
 
@@ -13,7 +13,7 @@ const {
 
 const router = express.Router({ mergeParams: true });
 
-router.get('/', storePaginationQuery(), asyncErrorHandler(listEntities));
+router.get('/', preparePaginationQuery(), asyncErrorHandler(listEntities));
 router.post('/', asyncErrorHandler(createEntity));
 
 router.use('/:id', preloadEntity(Listings));
