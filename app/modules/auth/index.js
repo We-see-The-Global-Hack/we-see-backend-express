@@ -12,8 +12,8 @@ const router = express.Router();
 
 router.post('/signup', asyncErrorHandler(signup));
 
-router.post('/authenticate', auth.authenticate('local', { session: false }), asyncErrorHandler(login));
+router.post('/login', auth.authenticate('local', { session: false }), asyncErrorHandler(login));
 
-router.get('/checkAuth', auth.authenticate('jwt', { session: false }), asyncErrorHandler(checkAuth));
+router.get('/check', asyncErrorHandler(checkAuth));
 
 module.exports = router;
