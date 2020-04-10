@@ -19,7 +19,7 @@ const UserListingsSchema = new Schema({
   },
   generalType: {
     type: String,
-    enum: ['material', 'time'],
+    enum: ['material', 'time', 'money'],
     required: true,
   },
   categoryId: {
@@ -27,6 +27,7 @@ const UserListingsSchema = new Schema({
     required: true,
     default: 'Listings',
   },
+  categoryName: String,
   userId: {
     type: Schema.ObjectId,
     ref: 'Users',
