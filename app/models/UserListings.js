@@ -12,6 +12,31 @@ const UserListingsSchema = new Schema({
     required: true,
     default: customAlphabet('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', 6),
   },
+  entity: {
+    type: String,
+    required: true,
+    default: 'userListing',
+  },
+  categoryId: {
+    type: String,
+    required: true,
+    default: 'Listings',
+  },
+  userId: {
+    type: Schema.ObjectId,
+    ref: 'Users',
+  },
+  description: String,
+  state: String,
+  kind: {
+    type: String,
+    enum: ['offer', 'need'],
+    required: true,
+  },
+  isActive: {
+    type: Boolean,
+    default: true,
+  },
 }, {
   timestamps: true,
   collection: 'UserListings',

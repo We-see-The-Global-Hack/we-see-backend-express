@@ -13,6 +13,11 @@ const ListingsSchema = new Schema({
     required: true,
     default: customAlphabet('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', 6),
   },
+  entity: {
+    type: String,
+    required: true,
+    default: 'listing',
+  },
   categoryName: String,
   categoryDescription: String,
   additionalInfo: String,
