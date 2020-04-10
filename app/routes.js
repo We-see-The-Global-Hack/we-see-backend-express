@@ -3,7 +3,7 @@ const userComments = require('./modules/userComments');
 const listings = require('./modules/listings');
 const userLikes = require('./modules/userLikes');
 const userListings = require('./modules/userListings');
-const users = require('./modules/users');
+const constantsHandler = require('./modules/constantsHandler');
 
 const routing = (app) => {
   app.use('/api/dealConfirmations', dealConfirmations);
@@ -11,7 +11,7 @@ const routing = (app) => {
   app.use('/api/userComments', userComments);
   app.use('/api/userLikes', userLikes);
   app.use('/api/userListings', userListings);
-  app.use('/api/users', users);
+  app.use('/api/constants', constantsHandler);
 };
 
 module.exports = { routing };
