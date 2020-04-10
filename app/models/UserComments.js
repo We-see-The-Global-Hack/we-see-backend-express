@@ -12,6 +12,20 @@ const UserCommentsSchema = new Schema({
     required: true,
     default: customAlphabet('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', 6),
   },
+  entity: {
+    type: String,
+    required: true,
+    default: 'userComments',
+  },
+  userId: {
+    type: Schema.ObjectId,
+    ref: 'Users',
+  },
+  listingId: {
+    type: Schema.ObjectId,
+    ref: 'UserListings',
+  },
+  comment: String,
 }, {
   timestamps: true,
   collection: 'UserComments',

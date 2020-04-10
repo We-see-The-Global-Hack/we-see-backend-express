@@ -12,6 +12,16 @@ const DealsConfirmationsSchema = new Schema({
     required: true,
     default: customAlphabet('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', 6),
   },
+  userThatOffer: {
+    type: Schema.ObjectId,
+    ref: 'Users',
+  },
+  userThatNeed: {
+    type: Schema.ObjectId,
+    ref: 'Users',
+  },
+  userThatOfferConfirmed: Boolean,
+  userThatNeedConfirmed: Boolean,
 }, {
   timestamps: true,
   collection: 'DealsConfirmations',

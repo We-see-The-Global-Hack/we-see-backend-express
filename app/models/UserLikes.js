@@ -12,6 +12,16 @@ const UserLikesSchema = new Schema({
     required: true,
     default: customAlphabet('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', 6),
   },
+  listingId: {
+    type: Schema.ObjectId,
+    ref: 'UserListings',
+  },
+  fromUser: [{
+    userId: {
+      type: Schema.ObjectId,
+      ref: 'Users',
+    },
+  }],
 }, {
   timestamps: true,
   collection: 'UserLikes',
