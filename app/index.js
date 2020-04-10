@@ -19,14 +19,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get('/health', (req, res) => res.json({ status: 'ok' }));
+app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
 
 app.use(helmet());
 app.use(compression({ level: 6 }));
 
 app.use(authMiddleware.initialize());
 
-app.use('/', authenticate);
+app.use('/api/', authenticate);
 
 app.use(authMiddleware.authenticate('jwt', { session: false }));
 
