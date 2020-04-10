@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { ObjectId } = require('mongoose');
 const { customAlphabet } = require('nanoid');
 const mongoosePaginate = require('mongoose-paginate');
 
@@ -12,11 +13,19 @@ const ListingsSchema = new Schema({
     required: true,
     default: customAlphabet('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', 6),
   },
+  categoryName: String,
+  categoryDescription: String,
+  additionalInfo: String,
+  parentCategory: ObjectId,
+  isActive: Boolean,
 }, {
   timestamps: true,
   collection: 'Listings',
 });
 
+ListingsSchema.add({
+  subcategories: [ListingsSchema],
+});
 
 ListingsSchema.set('toObject', { virtuals: true });
 ListingsSchema.set('toJSON', { virtuals: true });
