@@ -14,6 +14,6 @@ router.post('/signup', asyncErrorHandler(signup));
 
 router.post('/login', auth.authenticate('local', { session: false }), asyncErrorHandler(login));
 
-router.get('/check', asyncErrorHandler(checkAuth));
+router.get('/check', auth.authenticate('jwt', { session: false }), asyncErrorHandler(checkAuth));
 
 module.exports = router;
