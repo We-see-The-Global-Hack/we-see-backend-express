@@ -7,6 +7,7 @@ const express = require('express');
 const { NOT_FOUND, INTERNAL_SERVER_ERROR } = require('http-status-codes');
 
 const { routing } = require('./routes');
+const authMiddleware = require('./middlewares/auth');
 
 const app = express();
 
@@ -19,6 +20,11 @@ app.get('/health', (req, res) => res.json({ status: 'ok' }));
 
 app.use(helmet());
 app.use(compression({ level: 6 }));
+
+app.use(authMiddleware.initialize());
+
+
+app.use(authMiddleware.authenticate('jwt', { session: false }));
 
 routing(app);
 
