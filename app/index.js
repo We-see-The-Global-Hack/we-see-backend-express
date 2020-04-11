@@ -9,6 +9,7 @@ const { NOT_FOUND, INTERNAL_SERVER_ERROR } = require('http-status-codes');
 const { routing } = require('./routes');
 const authMiddleware = require('./middlewares/auth');
 const authenticate = require('./modules/auth');
+const userListings = require('./modules/userListings');
 
 require('./db/createConnection')();
 
@@ -23,6 +24,8 @@ app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
 
 app.use(helmet());
 app.use(compression({ level: 6 }));
+
+app.use('/api/userListings', userListings);
 
 app.use(authMiddleware.initialize());
 
